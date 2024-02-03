@@ -22,6 +22,9 @@ class AuthController extends Controller
         $userData = $request->validated();
         $userData['password'] = Hash::make($userData['password']);
         $newUser = User::create($userData);
+        if ($request->hasFile('image')) {
+            $newUser->addMediaFromRequest('image')->toMediaCollection('images');
+        }
         Auth::login($newUser);
         
         return redirect()->route('home');
@@ -50,18 +53,14 @@ class AuthController extends Controller
             $credentials = ['email' => $userData['phone'], 'password' => $userData['password']];
         }
 
-        if ($request->has('remember_me')){
-            $remember = true;
-        } else {
-            $remember = false;
-        }
+        $remember = $request->has('remember_me');
 
         if(Auth::attempt($credentials, $remember)){
             $request->session()->regenerate();
 
             return redirect('/');
         }else{
-            return redirect()->back()->with('fail', 'Wrong Credentials');
+            return redirect()->back()->with('fail', 'Wrong Email or Password');
         }
     }
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Site\Auth\AuthController;
 use App\Http\Controllers\Site\Blogs\BlogController;
+use App\Http\Controllers\Site\Home\HomeController;
 use App\Http\Controllers\Site\Pages\PagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,11 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // return view('welcome');
-    return redirect('/home');
+    return redirect()->route('home');
 });
-Route::get('home', function () {
-    return view('Site.home');
-})->name('home');
+Route::get('home', [HomeController::class, 'home'])->name('home');
 Route::get('contact', [PagesController::class, 'contactPage'])->name('contact.page');
 Route::get('about', [PagesController::class, 'aboutPage'])->name('about.page');
 
@@ -30,6 +29,8 @@ Route::resource('blog', BlogController::class);
 // Auth Protected Routes
 Route::middleware('auth')->group( function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('my-blogs', [BlogController::class, 'myBlogs'])->name('my.blogs');
+    Route::get('delete-blog-cover/{blog}', [BlogController::class, 'deleteBlogCover'])->name('delete.blog.cover');
 });
 // Guest Protected Routes
 Route::middleware('guest')->group( function () {
@@ -38,4 +39,9 @@ Route::middleware('guest')->group( function () {
     Route::post('register', [AuthController::class, 'register'])->name('register');
     Route::get('login', [AuthController::class, 'loginForm'])->name('login.form');
     Route::post('login', [AuthController::class, 'login'])->name('login');
+});
+
+
+Route::get('test', function () {
+    return view('test');
 });

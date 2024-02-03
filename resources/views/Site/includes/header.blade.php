@@ -44,10 +44,10 @@
                         <li class="has-childrenuser" style="content: none;">
                             <a>
                                 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-                                    <img src="./images/shutterbug.jpg" alt=""
+                                    <img src="{{ auth()->user()->getFirstMediaUrl('images') ?? asset('/images/default-user.jpg')}}" alt="user_image"
                                         style="width: 50px; height: 50px; border-radius: 50%;">
                                     <span style=" color: #151515; cursor: pointer; font-weight: 600;">
-                                        Hi, {{ auth()->user()->name }}
+                                        Hi, {{ explode(" ", auth()->user()->name)[0] }}
                                     </span>
                                 </div>
                             </a>
@@ -164,16 +164,16 @@
                         <li class="has-children">
                             <a>
                                 <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
-                                    <img src="{{ auth()->user()->image ?? asset('/images/default-user.jpg')}}" alt="user_image"
+                                    <img src="{{ auth()->user()->getFirstMediaUrl('images') ?? asset('/images/default-user.jpg')}}" alt="user_image"
                                         style="width: 50px; height: 50px; border-radius: 50%;">
                                     <span style=" color: #151515; cursor: pointer; font-weight: 600;">
-                                        Hi, {{ auth()->user()->name }}
+                                        Hi, {{ explode(" ", auth()->user()->name)[0] }}
                                     </span>
                                 </div>
                             </a>
                             <ul class="sub-menu">
                                 <li><a href="" style="font-size: 15px; font-weight: 700;">My Profile</a></li>
-                                <li><a href="" style="font-size: 15px; font-weight: 700;">My Blogs</a></li>
+                                <li><a href="{{ route('my.blogs') }}" style="font-size: 15px; font-weight: 700;">My Blogs</a></li>
                                 <li><a href="" style="font-size: 15px; font-weight: 700;">My Setting</a></li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST"
