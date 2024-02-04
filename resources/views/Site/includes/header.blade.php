@@ -53,7 +53,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li><a href="" style="font-size: 15px; font-weight: 700;">My Profile</a></li>
-                                <li><a href="" style="font-size: 15px; font-weight: 700;">My Blogs</a></li>
+                                <li><a href="{{ route('user.blogs', auth()->id()) }}" style="font-size: 15px; font-weight: 700;">My Blogs</a></li>
                                 <li><a href="" style="font-size: 15px; font-weight: 700;">My Setting</a></li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST"
@@ -173,7 +173,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li><a href="" style="font-size: 15px; font-weight: 700;">My Profile</a></li>
-                                <li><a href="{{ route('my.blogs') }}" style="font-size: 15px; font-weight: 700;">My Blogs</a></li>
+                                <li><a href="{{ route('user.blogs', auth()->id()) }}" style="font-size: 15px; font-weight: 700;">My Blogs</a></li>
                                 <li><a href="" style="font-size: 15px; font-weight: 700;">My Setting</a></li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST"

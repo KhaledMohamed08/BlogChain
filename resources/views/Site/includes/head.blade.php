@@ -9,7 +9,7 @@
 	<!--- basic page needs
    ================================================== -->
 	<meta charset="utf-8">
-	<title>BlogChain</title>
+	<title>{{ env('APP_NAME') }}</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -19,9 +19,10 @@
 
 	<!-- CSS
    ================================================== -->
-   <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+   	<link rel="stylesheet" href="{{ asset('css/base.css') }}">
 	<link rel="stylesheet" href="{{asset('css/vendor.css')}}">
 	<link rel="stylesheet" href="{{asset('css/main.css')}}">
+	<link rel="stylesheet" href="{{asset('/richtexteditor/rte_theme_default.css')}}" />
     @yield('styles')
 
 
@@ -34,7 +35,7 @@
 	================================================== -->
 	<link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
 	<link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
-
+	
 </head>
 
 <body id="top">

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Response;
 
 class BlogController extends Controller
@@ -90,12 +91,12 @@ class BlogController extends Controller
         return redirect()->route('my.blogs')->with('sucss',$blog->title . ' ' . 'Blog Deleted Sucssfully');
     }
 
-    public function myBlogs()
+    public function userBlogs(User $user)
     {
-        $user = auth()->user();
+        $userId = $user->id;
         $blogs = $user->blogs;
 
-        return view('Site.Pages.Blog.myBlogs', compact('blogs'));
+        return view('Site.Pages.Blog.userBlogs', compact('blogs', 'userId'));
     }
 
     public function deleteBlogCover(Blog $blog)

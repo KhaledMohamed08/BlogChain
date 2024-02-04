@@ -44,8 +44,12 @@
                 </div>
                 <div>
                     <label for="content">Your Blog</label>
-                    <textarea class="full-width" placeholder="write your blog here..." id="content" name="content">{{ $blog->content }}</textarea>
+                    <textarea id="inp_editor1" name="content" class="full-width" placeholder="write your blog here..." >{{ $blog->content }}</textarea>
                 </div>
+                {{-- <div>
+                    <label for="content">Your Blog</label>
+                    <textarea class="full-width" placeholder="write your blog here..." id="content" name="content">{{ $blog->content }}</textarea>
+                </div> --}}
                 @if ($blog->getFirstMediaUrl('blog_cover'))
                 <div class="image-container">
                     <label>Blog image</label>
@@ -63,7 +67,7 @@
                       <span class="label-text">Send a copy to yourself</span>
                    </label> --}}
 
-                <input class="button-primary full-width-on-mobile full-width" type="submit" value="publish your blog">
+                <input class="button-primary full-width-on-mobile full-width" type="submit" value="update your blog">
 
             </form>
 
@@ -96,6 +100,11 @@
                 }
             }
 
+        </script>
+        <script>
+            var editor1 = new RichTextEditor("#inp_editor1", {
+                
+            });
         </script>
     @endsection
 </x-Site.template>

@@ -13,9 +13,11 @@
         </style>
     @endsection
     <div class="row">
+        @if (auth()->id() === $userId)    
         <div class="create">
             <a class="button button-primary full-width-on-mobile" href="{{ route('blog.create') }}">Create New Blog</a>
         </div>
+        @endif
         @if (session('sucss'))
             <div class="alert alert-box ss-success hideit">
                 <p>{{ session('sucss') }}</p>
@@ -63,7 +65,7 @@
 
 							</div>
 							<div class="entry-excerpt">
-								{{ $blog->content }}
+								{!! $blog->content !!}
 							</div>
 						</div>
 

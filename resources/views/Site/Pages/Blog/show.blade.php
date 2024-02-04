@@ -63,7 +63,7 @@
                         <li class="cat"><a href="">Wordpress</a><a href="">Design</a></li>				
                     </ul>						
 
-                    <p>{{ $blog->content }}</p>
+                    <p>{!! $blog->content !!}</p>
 
                     <p class="tags">
                         <span>Tagged in :</span>
@@ -74,7 +74,7 @@
                         <img src="{{ $blog->user->getFirstMediaUrl('images') }}" alt="author_image">
 
                         <div class="about">
-                            <h4><a href="#">Jonathan Smith</a></h4>
+                            <h4><a href="#">{{ $blog->user->name }}</a></h4>
                         
                             <p>Alias aperiam at debitis deserunt dignissimos dolorem doloribus, fuga fugiat impedit laudantium magni maxime nihil nisi quidem quisquam sed ullam voluptas voluptatum. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             </p>

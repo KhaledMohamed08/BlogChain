@@ -64,7 +64,7 @@
 
 							</div>
 							<div class="entry-excerpt">
-								{{ $blog->content }}
+								{!! $blog->content !!}
 							</div>
 						</div>
 

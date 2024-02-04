@@ -29,7 +29,7 @@ Route::resource('blog', BlogController::class);
 // Auth Protected Routes
 Route::middleware('auth')->group( function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('my-blogs', [BlogController::class, 'myBlogs'])->name('my.blogs');
+    Route::get('blogs/{user}', [BlogController::class, 'userBlogs'])->name('user.blogs');
     Route::get('delete-blog-cover/{blog}', [BlogController::class, 'deleteBlogCover'])->name('delete.blog.cover');
 });
 // Guest Protected Routes
